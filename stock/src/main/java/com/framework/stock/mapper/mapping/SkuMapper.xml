@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.framework.stock.mapper.StockKeepingUnitMapper">
+
+
+    <select id="getSkuAndSpuBySkuId" resultType="com.framework.stock.model.StockKeepingUnit">
+        SELECT sku.id, sku.spu_id, sku.name, spu.name catalogName
+		FROM ybt_stock_sku sku 
+			LEFT JOIN ybt_stock_spu spu on sku.spu_id = spu.id
+		WHERE sku.id = #{skuId}
+    </select>
+</mapper>

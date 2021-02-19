@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.framework</groupId>
+		<artifactId>stock-project</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<artifactId>stock-api</artifactId>
+	<name>stock-api</name>
+	<description>库存接口</description>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.framework</groupId>
+			<artifactId>stock-model</artifactId>
+			<version>${stock.version}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<source>1.8</source>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			<!-- maven 打包集成插件 -->
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<descriptorRefs>
+						<!-- 将依赖一起打包到 JAR -->
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+					<appendAssemblyId>false</appendAssemblyId>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

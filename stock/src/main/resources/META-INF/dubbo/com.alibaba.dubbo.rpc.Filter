@@ -1,0 +1,1 @@
+dubboExceptionFilter=com.framework.stock.common.aop.DubboExceptionFilter

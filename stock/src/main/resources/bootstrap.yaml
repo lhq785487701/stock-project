@@ -1,0 +1,44 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: stock
+  profiles:
+    active: '@spring.active@'
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        enabled: true
+        password: nacos
+        username: nacos
+      config:
+        prefix: stock
+        server-addr: 127.0.0.1:8848
+        file-extension: yaml
+        group: LHQ-STOCK
+        namespace: '@spring.active@'
+  datasource:
+    url: jdbc:mysql://localhost:3306/ybt_stock?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useSSL=false
+    username: root
+    password: LHQ0318lhq
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  redis:
+    host: 127.0.0.1
+    password: 123456
+    port: 6379
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:com/framework/stock/mapper/mapping/*.xml
+  type-aliases-package: com.framework.stock.model
+  
+#logging:
+#   level:
+#     root: OFF
+#     com:
+#       framework:
+#         stock:
+#           TestDemo: info
